@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Image Slider</title>
+
+    </head>
+    <body>
+        <style>
+            *{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins' , sans-serif;
+    box-sizing: border-box;
+}
+/* body {
+    background: black;
+} */
+.gallery {
+    width: 900px;
+    display: flex;
+    overflow-x: scroll;
+}
+.gallery div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    padding: 10px;
+    flex: none;
+}
+.gallery div img {
+    width: 100%;
+    filter: grayscale(100%);
+    transition: transform 0.5s ;
+    height: 80%;
+}
+.gallery::-webkit-scrollbar{
+    display: none;
+}
+.gallery-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10% auto;
+}
+
+#backBtn , #nextBtn {
+    width: 50px;
+    cursor: pointer;
+    margin: 40px;
+}
+.gallery div img:hover {
+    filter: grayscale(0);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+        </style>
+        <div class="gallery-wrap">
+            <img src="/Image/arrow_back.png" id="backBtn">
+            <div class="gallery">
+                <div>
+                    <span><img src="/Image/1663480925328.jpg" alt=""  > </span>
+                    <span><img src="/Image/1663481021052.jpg" alt=""> </span>
+                    <span><img src="/Image/IMG-20200212-WA0032.jpg" alt=""> </span>
+                   
+                </div>
+                <div>
+                    <span><img src="/Image/IMG-20230126-WA0035.jpg" alt=""> </span>
+                    <span><img src="/Image/IMG_20200212_090658.jpg" alt=""> </span>
+                    <span><img src="/Image/IMG_20210521_163834_159.jpg" alt=""> </span>
+                   
+                </div>
+                <div>
+                    <span><img src="/Image/IMG_20221021_104828_672.jpg" alt=""> </span>
+                    <span><img src="/Image/IMG_20230116_202059.jpg" alt=""> </span>
+                    <span><img src="/Image/Rohith Sivakumar.jpg" alt=""> </span>
+                   
+                </div>
+            </div>
+            
+            <img src="/Image/arrow_forward.png" id="nextBtn">
+        </div>
+       
+<script>
+    let scrollContainer = document.querySelector(".gallery");
+let backBtn = document.getElementById("backBtn");
+let nextBtn = document.getElementById("nextBtn");
+
+scrollContainer.addEventListener("wheel",(evt)=>{
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+});
+
+nextBtn.addEventListener("click", ()=> {
+    scrollContainer.scrollLeft += 200;
+});
+
+
+backBtn.addEventListener("click", ()=> {
+    scrollContainer.scrollLeft -= 200;
+});
+</script>
+
+    </body>
+</html>
+
+
+
